@@ -1,0 +1,17 @@
+{
+  "name": "michaelmeneses/moodle-local_costcenter",
+  "license": "GPL-3.0",
+  "type": "moodle-local",
+  "authors": [
+    {
+      "name": "Michael Meneses",
+      "email": "michael.douglas.meneses.2@gmail.com"
+    }
+  ],
+  "require": {
+    "composer/installers": "~1.0 || ~2.0"
+  },
+  "extra": {
+    "installer-name": "costcenter"
+  }
+}

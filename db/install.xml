@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/costcenter/db" VERSION="20241104" COMMENT="Centro de Custo"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd">
+    <TABLES>
+        <TABLE NAME="costcenter" COMMENT="Tabela de centros de custo">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" UNSIGNED="true" NOTNULL="true" SEQUENCE="true" COMMENT="ID do centro de custo"/>
+                <FIELD NAME="idnumber" TYPE="char" LENGTH="100" NOTNULL="true" SEQUENCE="false" COMMENT="Código do centro de custo"/>
+                <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" COMMENT="Nome do centro de custo"/>
+                <FIELD NAME="description" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="Descrição do centro de custo"/>
+                <FIELD NAME="uf" TYPE="char" LENGTH="2" NOTNULL="true" SEQUENCE="false" COMMENT="UF associada ao centro de custo"/>
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" UNSIGNED="true" NOTNULL="true" SEQUENCE="false" COMMENT="Data de criação"/>
+                <FIELD NAME="timemodified" TYPE="int" LENGTH="10" UNSIGNED="true" NOTNULL="true" SEQUENCE="false" COMMENT="Data de modificação"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="idnumber_unique" UNIQUE="true" FIELDS="idnumber"/>
+            </INDEXES>
+        </TABLE>
+        <TABLE NAME="costcenter_users" COMMENT="Tabela de centros de custo com usuários">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" UNSIGNED="true" NOTNULL="true" SEQUENCE="true" COMMENT="ID do centro de custo"/>
+                <FIELD NAME="costcenterid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="Código do centro de custo"/>
+                <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID do usuário"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="costcenter_key" TYPE="foreign" FIELDS="costcenterid" REFTABLE="costcenter" REFFIELDS="id" COMMENT=""/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="costcenterid" UNIQUE="false" FIELDS="costcenterid"/>
+                <INDEX NAME="userid" UNIQUE="false" FIELDS="userid"/>
+            </INDEXES>
+        </TABLE>
+    </TABLES>
+</XMLDB>

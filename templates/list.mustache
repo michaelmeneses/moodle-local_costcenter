@@ -1,0 +1,44 @@
+{{{ add_button }}}
+
+{{#alert}}
+    <div class="alert alert-info">
+        {{{ alert }}}
+    </div>
+{{/alert}}
+
+<ul class="list-group list-group-horizontal mb-3">
+    <li class="list-group-item">
+        <a href="{{url}}?uf=NA" class="btn btn-link">Nacional</a>
+    </li>
+    <li class="list-group-item">
+        <a href="{{url}}?uf=SP" class="btn btn-link">São Paulo</a>
+    </li>
+    <li class="list-group-item">
+        <a href="{{url}}?uf=RJ" class="btn btn-link">Rio de Janeiro</a>
+    </li>
+</ul>
+
+<table class="generaltable">
+    <tr>
+        <th>ID</th>
+        <th>{{#str}} idnumber {{/str}}</th>
+        <th>{{#str}} name {{/str}}</th>
+        <th>{{#str}} uf, local_costcenter {{/str}}</th>
+        <th>{{#str}} description {{/str}}</th>
+        <th>Ações</th>
+    </tr>
+    {{#data}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{idnumber}}</td>
+            <td>{{name}}</td>
+            <td>{{uf}}</td>
+            <td>{{description}}</td>
+            <td>{{{editurl}}}</td>
+        </tr>
+    {{/data}}
+</table>
+
+{{#js}}
+    console.log('>>> list view');
+{{/js}}
